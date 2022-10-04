@@ -1,37 +1,50 @@
-studentArray=[];
+var names_of_people = [];
+    
+function submit()
+{
+    var GuestName = document.getElementById("name1").value;
+	// use the push function as - names_of_people.push(GuestName);
+	names_of_people.push(GuestName);
+	console.log(GuestName);    
+    console.log(names_of_people);
+    var lenght_of_name = names_of_people.length;
+    console.log(lenght_of_name);
+	document.getElementById("display_name").innerHTML=names_of_people.toString();
+   }
 
-displayStudentArray=[];
 
-function submit() {
-for(j=1; j<=4; j++){
-    studentName=document.getElementById("name_of_the_student_" + j).value;
-    studentArray.push(studentName);
+
+function show()
+{
+	var i= names_of_people.join("<br>");
+	console.log(names_of_people);
+	document.getElementById("p1").innerHTML=i.toString();
+	document.getElementById("sort_button").style.display="block";
+	
 }
 
-console.log(studentArray);
 
-var length = studentArray.length;
+function sorting()
+	{
+		names_of_people.sort();           // add the sort function here
+		// .sort();
+		var i= names_of_people.join("<br>");
+		console.log(names_of_people);		
+		document.getElementById("sorted").innerHTML=i.toString();
+		}
 
-for(k=0; k<length; k++){
-    displayStudentArray.push("<h4> Name - " + studentArray[k] + "</h4>")
-}
 
-
-document.getElementById("display_name_with_commas").innerHTML = displayStudentArray;
-
-withoutComma= displayStudentArray.join(" ");
-
-document.getElementById("display_name_without_commas").innerHTML = withoutComma;
-
-document.getElementById("submit_button").style.display="none";
-
-document.getElementById("sort_button").style.display="inline-block";
-}
-
-function sorting(){
-    displayStudentArray.sort();
-
-    withoutComma= displayStudentArray.join(" ");
-
-    document.getElementById("display_name_without_commas").innerHTML = withoutComma;
+function searching()
+{
+	var s= document.getElementById("s1").value;
+	var found=0;
+	var j;
+	for(j=0; j<names_of_people.length; j++)
+		{
+			if(s==names_of_people[j]){
+				found=found+1;
+			}	
+		}
+	document.getElementById("p2").innerHTML="name found "+found+" time/s";
+	console.log("found name "+found+" time/s");
 }
